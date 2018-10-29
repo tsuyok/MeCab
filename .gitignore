@@ -1,0 +1,10 @@
+# Editor directories and files
+**/out
+.idea
+*.iml
+*.ipr
+*.iws
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
