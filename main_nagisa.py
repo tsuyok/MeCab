@@ -7,19 +7,19 @@ import numpy as np
 
 
 def main(argv=sys.argv):
-    if len(argv) != 2:
+    if len(argv) != 3:
         print('Usage: {} [input text]'.format(argv[0]))
         sys.exit(1)
 
     # コーチングのテキストを取得
-    f = open(argv[1])
+    f = open(argv[2])
     text = f.read()  # ファイル終端まで全て読んだデータを返す
     f.close()
 
     node = wakachi(text)
 
     # モデル取得
-    model = word2vec.Word2Vec.load("./wiki.model")
+    model = word2vec.Word2Vec.load(argv[1])
 
     # ベクトルを計算
 
