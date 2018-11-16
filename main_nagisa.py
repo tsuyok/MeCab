@@ -21,7 +21,6 @@ def main(argv=sys.argv):
     # モデル取得
     model = word2vec.Word2Vec.load(argv[1])
 
-    # ベクトルを計算
 
     # コーチング
     coaching = get_vector(node, model)
