@@ -20,35 +20,32 @@ def main(argv=sys.argv):
     text = f.read()  # ファイル終端まで全て読んだデータを返す
     f.close()
 
-    node = wakachi(text)
-
     # モデル取得
     model = word2vec.Word2Vec.load(argv[1])
 
-    # コーチング
-    coaching = get_vector(node, model)
+    node = wakachi(text)
 
     # 自責
     print(wakachi('僕のせい、結局は 自分のせい 悪かった 自分が'))
-    self_condemnation = get_vector(wakachi('僕のせい、結局は 自分のせい 悪かった 自分が'), model)
+    self_condemnation = get_vector(node, wakachi('僕のせい、結局は 自分のせい 悪かった 自分が'), model)
 
     print(self_condemnation)
 
     # さらけ出し
     print(wakachi('知らない 失敗した 恥ずかしい 辛い うまくいかない ミスった できないんですよね できない 失敗しました'))
-    sarakedashi = get_vector(wakachi('知らない 失敗した 恥ずかしい 辛い うまくいかない ミスった できないんですよね できない 失敗しました'), model)
+    sarakedashi = get_vector(node, wakachi('知らない 失敗した 恥ずかしい 辛い うまくいかない ミスった できないんですよね できない 失敗しました'), model)
 
     print(sarakedashi)
 
     # 成長を信じる
     print(wakachi('変わった 変わりそう 成長 大丈夫 挑戦を後押しした 可能性がある できる'))
-    growth_mind = get_vector(wakachi('変わった 変わりそう 成長 大丈夫 挑戦を後押しした 可能性がある できる'), model)
+    growth_mind = get_vector(node, wakachi('変わった 変わりそう 成長 大丈夫 挑戦を後押しした 可能性がある できる'), model)
 
     print(growth_mind)
 
     # アンラーン
     print(wakachi('今思うと やってみたい 試してみる 試す 教えて欲しい'))
-    unlearn = get_vector(wakachi('今思うと やってみたい 試してみる 試す 教えて欲しい'), model)
+    unlearn = get_vector(node, wakachi('今思うと やってみたい 試してみる 試す 教えて欲しい'), model)
 
     print(unlearn)
 
