@@ -6,8 +6,6 @@ from gensim.models import word2vec
 import numpy as np
 import subprocess
 
-import MeCab
-
 
 def main(argv=sys.argv):
     '''
