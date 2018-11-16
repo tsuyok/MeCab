@@ -17,12 +17,15 @@ def main(argv=sys.argv):
         sys.exit(1)
 
     # テキストからコーパス作成
+    print("find " + argv[1] + " | grep wiki | awk '{system(\"cat \"$0\" >> wiki.txt\")}'")
     subprocess.check_call("find " + argv[1] + " | grep wiki | awk '{system(\"cat \"$0\" >> wiki.txt\")}'")
 
     # MeCab
+    print("mecab -d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd wiki.txt -o wiki_wakati.txt")
     subprocess.check_call("mecab -d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd wiki.txt -o wiki_wakati.txt")
 
     # 文字コード
+    print("nkf -w --overwrite wiki_wakati.txt")
     subprocess.check_call("nkf -w --overwrite wiki_wakati.txt")
 
     # Word2Vec モデル化
