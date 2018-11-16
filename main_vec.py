@@ -4,7 +4,7 @@ import sys
 import nagisa
 from gensim.models import word2vec
 import numpy as np
-
+from statistics import mean, median,variance,stdev
 
 def main(argv=sys.argv):
     '''
@@ -66,7 +66,13 @@ def get_vector(words1, words2, model):
                 pass
             word_count += 1
 
-    return sum_vec
+    arr = sum_vec.reverse()[:10]
+    return {
+        '平均': mean(arr),
+        '中央値': median(arr),
+        '分散': variance(arr),
+        '標準偏差': stdev(arr)
+    }
 
 
 # cos類似度を計算
