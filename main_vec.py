@@ -55,13 +55,13 @@ def wakachi(text):
 
 # テキストのベクトルを計算
 def get_vector(words1, words2, model):
-    sum_vec = np.zeros(200)
+    sum_vec = []
     word_count = 0
 
     for word1 in words1:
         for word2 in words2:
             try:
-                sum_vec += cos_sim(model.wv[word1], model.wv[word2])
+                sum_vec.append(cos_sim(model.wv[word1], model.wv[word2]))
             except KeyError as instance:
                 pass
             word_count += 1
